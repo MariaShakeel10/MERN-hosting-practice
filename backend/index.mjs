@@ -12,17 +12,29 @@ connectToDB()
 const app = express();
 
 app.use(
-	cors({
-		origin: ['http://localhost:5174',
-			 'http://localhost:5173',
-			"https://mern-hosting-practice-frontend.vercel.app"
-			
-			],
-		methods: ['GET', 'PUT', 'POST', 'DELETE'],
-		credentials: true,
-		allowedHeaders: ['Content-Type', 'Authorization'],
-	}),
+  cors({
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'https://mern-hosting-practice-frontend.vercel.app',
+      'https://mern-hosting-practice-frontend-git-main-maria-shakeels-projects.vercel.app',
+      'https://mern-hosting-practice-frontend-*.vercel.app' // Wildcard for preview deployments
+    ],
+    methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: [
+      'Content-Type', 
+      'Authorization',
+      'X-Requested-With',
+      'Accept'
+    ],
+    credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+  })
 );
+
+// Handle OPTIONS requests for all routes
+app.options('*', cors());
 
 
 app.use(express.json());
