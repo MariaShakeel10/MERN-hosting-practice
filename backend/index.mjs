@@ -6,8 +6,8 @@ import productRoutes from "./routes/productRoutes.mjs"
 import chalk from "chalk";
 import cors from "cors";
 import connectToDB from "./db/index.mjs";
-import dotenv from "dotenv.config"
-
+import dotenv from 'dotenv';
+dotenv.config();
 //Connecting MongoDB
 connectToDB()
 const app = express();
