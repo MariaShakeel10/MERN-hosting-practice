@@ -17,8 +17,8 @@ app.use(
     origin: [
       'http://localhost:5173',
       'http://localhost:5174',
+  
       'https://mern-hosting-practice-frontend.vercel.app',
-      'https://mern-hosting-practice-frontend-git-main-maria-shakeels-projects.vercel.app',
       'https://mern-hosting-practice-frontend-*.vercel.app' // Wildcard for preview deployments
     ],
     methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS', 'PATCH'],
