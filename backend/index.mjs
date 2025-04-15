@@ -6,6 +6,7 @@ import productRoutes from "./routes/productRoutes.mjs"
 import chalk from "chalk";
 import cors from "cors";
 import connectToDB from "./db/index.mjs";
+import dotenv from "dotenv.config"
 
 //Connecting MongoDB
 connectToDB()
@@ -38,7 +39,7 @@ app.options('*', cors());
 
 
 app.use(express.json());
-const port = 5000;
+
 app.use("/api/auth",userRoutes)
 app.use("/api/cart",cartRoutes)
 app.use('/api/products', productRoutes);
@@ -48,6 +49,8 @@ app.use("/", (req, res, next) => {
   next();
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+const port = process.env.PORT || 5000; // Railway provides PORT env variable
+
+app.listen(port, '0.0.0.0', () => { // Listen on all network interfaces
+  console.log(`Server running on port ${port}`);
 });
